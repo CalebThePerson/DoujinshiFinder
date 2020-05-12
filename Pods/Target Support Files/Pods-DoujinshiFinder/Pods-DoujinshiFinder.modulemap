@@ -1,0 +1,6 @@
+framework module Pods_DoujinshiFinder {
+  umbrella header "Pods-DoujinshiFinder-umbrella.h"
+
+  export *
+  module * { export * }
+}
