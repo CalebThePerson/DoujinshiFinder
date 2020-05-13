@@ -8,15 +8,18 @@
 
 import UIKit
 import RealmSwift
+import SwiftDragAndDrop
 
 class HomeTableViewController: UITableViewController {
     
+    
     let realm = try! Realm()
-
+    
+    
+    var cellHeightsDictionary: [IndexPath: CGFloat] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.register(UINib(nibName: "InsideTableViewCell", bundle: nil), forCellReuseIdentifier: "CellCell")
         tableView.dataSource = self
         
@@ -26,8 +29,8 @@ class HomeTableViewController: UITableViewController {
     }
     
     var SauceySauce: Results<Sauce>?
-
-
+    
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -47,10 +50,10 @@ class HomeTableViewController: UITableViewController {
         return cell
     }
     
-
+    
     
     //MARK: - Add Button
-
+    
     @IBAction func AddButton(_ sender: UIBarButtonItem) {
         
         var textfield = UITextField()
@@ -62,7 +65,7 @@ class HomeTableViewController: UITableViewController {
                 print(ID)
                 print("Break your legs")
                 URLCreation(with: ID)
-
+                
             }
             
         }
@@ -88,7 +91,21 @@ class HomeTableViewController: UITableViewController {
         
         self.tableView.reloadData()
     }
-
-    
-    
 }
+
+//    func tableView(_ tableView: UITableView, moveDataItem from: IndexPath, to: IndexPath) {
+//            let fromDataItem: DataItem = data.items[from.item]
+//            data.items.remove(at: from.item)
+//            data.items.insert(fromDataItem, at: to.item)
+//        }
+//
+
+
+
+
+
+
+
+
+
+
