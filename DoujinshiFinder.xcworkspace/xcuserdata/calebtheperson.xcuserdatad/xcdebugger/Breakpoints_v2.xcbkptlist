@@ -3,4 +3,114 @@
    uuid = "EE11A73A-03E7-4E2D-89C8-1226A1CE365E"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B3D238BB-072B-4E7E-8DE8-87E61612496D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DoujinshiFinder/View/InsideTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "InsideTableViewCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "B3D238BB-072B-4E7E-8DE8-87E61612496D - c62dc55b81abde6c"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DoujinshiFinder.InsideTableViewCell.TheName.getter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "DoujinshiFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/calebtheperson/MyProjects/DoujinshiFinder/DoujinshiFinder/View/InsideTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "B3D238BB-072B-4E7E-8DE8-87E61612496D - 20cbc4423599ba78"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DoujinshiFinder.InsideTableViewCell.TheName.setter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "DoujinshiFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/calebtheperson/MyProjects/DoujinshiFinder/DoujinshiFinder/View/InsideTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "155">
+               </Location>
+               <Location
+                  uuid = "B3D238BB-072B-4E7E-8DE8-87E61612496D - 36c23bc344e4b56b"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DoujinshiFinder.InsideTableViewCell.TheName.modify : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "DoujinshiFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/calebtheperson/MyProjects/DoujinshiFinder/DoujinshiFinder/View/InsideTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  uuid = "B3D238BB-072B-4E7E-8DE8-87E61612496D - ec2133c4c062a981"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DoujinshiFinder.InsideTableViewCell.TheName.modify : Swift.Optional&lt;__C.UILabel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "DoujinshiFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/calebtheperson/MyProjects/DoujinshiFinder/DoujinshiFinder/View/InsideTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "B3D238BB-072B-4E7E-8DE8-87E61612496D - bcaeff5440fcacb4"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DoujinshiFinder.InsideTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; DoujinshiFinder.InsideTableViewCell"
+                  moduleName = "DoujinshiFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/calebtheperson/MyProjects/DoujinshiFinder/DoujinshiFinder/View/InsideTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "341">
+               </Location>
+               <Location
+                  uuid = "B3D238BB-072B-4E7E-8DE8-87E61612496D - 97e08b43c31a2b8d"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DoujinshiFinder.InsideTableViewCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;DoujinshiFinder.InsideTableViewCell&gt;"
+                  moduleName = "DoujinshiFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/calebtheperson/MyProjects/DoujinshiFinder/DoujinshiFinder/View/InsideTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "258">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -7,43 +7,47 @@
 //
 
 import UIKit
+import RealmSwift
 
 class HomeTableViewController: UITableViewController {
+    
+    let realm = try! Realm()
 
-//    var SauceySauce: Results<Sauce>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: "InsideTableViewCell", bundle: nil), forCellReuseIdentifier: "CellCell")
         tableView.dataSource = self
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        AcquireDATA()
+        
+        tableView.rowHeight = 50
     }
+    
+    var SauceySauce: Results<Sauce>?
+
 
     // MARK: - Table view data source
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return SauceySauce?.count ?? 0
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellCell", for: indexPath) as! InsideTableViewCell
-        print("Working")
         
+        
+        if let sauce = SauceySauce?[indexPath.row] {
+            cell.TheName.text = sauce.name
+            let ID = String(sauce.id)
+            cell.SauceNumbers.text = ID
+        }
         return cell
     }
+    
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 7
-    }
     
     //MARK: - Add Button
 
@@ -58,7 +62,9 @@ class HomeTableViewController: UITableViewController {
                 print(ID)
                 print("Break your legs")
                 URLCreation(with: ID)
+
             }
+            
         }
         
         //adding a text field to our alert
@@ -72,9 +78,17 @@ class HomeTableViewController: UITableViewController {
         alert.addAction(action)
         present(alert ,animated: true,completion: nil)
         
-        tableView.reloadData()
+        AcquireDATA()
     }
     
+    
+    //MARK: - Acquire DATA
+    func AcquireDATA() {
+        SauceySauce = realm.objects(Sauce.self)
+        
+        self.tableView.reloadData()
+    }
+
     
     
 }

@@ -8,5 +8,7 @@ target 'DoujinshiFinder' do
   # Pods for DoujinshiFinder
 
   pod 'RealmSwift'
+  pod 'SwiftDragAndDrop'
+  pod 'SwipeCellKit', :git => 'https://github.com/SwipeCellKit/SwipeCellKit.git', :branch => 'develop'
 
 end
