@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import SwiftDragAndDrop
 
 class HomeTableViewController: UITableViewController {
     
@@ -27,13 +26,12 @@ class HomeTableViewController: UITableViewController {
         
         tableView.rowHeight = 50
     }
-    
+    //A list of Sauce objects
     var SauceySauce: Results<Sauce>?
     
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return SauceySauce?.count ?? 0
     }
     
@@ -41,14 +39,53 @@ class HomeTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellCell", for: indexPath) as! InsideTableViewCell
         
-        
+        //Assinging the text and ID of the cell
         if let sauce = SauceySauce?[indexPath.row] {
             cell.TheName.text = sauce.name
             let ID = String(sauce.id)
             cell.SauceNumbers.text = ID
         }
+        cell.textLabel?.isUserInteractionEnabled = false
+        
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+                
+        performSegue(withIdentifier: "GoToCustom", sender: self)
+        
+        tableView.reloadData()
+    }
+    
+    //For some reason this shit doesn't work 
+//    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+//
+//        print("Selected")
+//
+//        performSegue(withIdentifier: "GoToCustom", sender: self)
+//
+//        tableView.reloadData()
+//        tableView.deselectRow(at: indexPath, animated: true)
+//
+//
+//    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! CustomViewController
+        
+        let OtherVC = InfoUITableViewController()
+        
+        if let indexPath = tableView.indexPathForSelectedRow{
+            
+            if let SauceID = SauceySauce?[indexPath.row].id {
+                vc.SauceID = SauceID
+                OtherVC.SelectedSauce = SauceySauce?[indexPath.row]
+                
+            }
+            
+        }
+    }
+    
     
     
     
@@ -56,20 +93,33 @@ class HomeTableViewController: UITableViewController {
     
     @IBAction func AddButton(_ sender: UIBarButtonItem) {
         
+        
         var textfield = UITextField()
         
         let alert = UIAlertController(title: "Add", message: "Insert the sauce you want info on", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add and Find", style: .default) { (Action) in
+            //Doesn't let the user enter just nothing and doesn't break the code
+            if textfield.text?.count == 0 {
+                textfield.placeholder = "Enter Numbers dweeb"
+                self.present(alert ,animated: true,completion: nil)
+                
+            }
+            //saves the text field as an ID
             if let ID = textfield.text {
                 print(ID)
                 print("Break your legs")
+                //Then runs URLCreatin that's inside API
                 URLCreation(with: ID)
+                //This delay stops this whole block from running too fast and not allowing the data to be reloaded
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { // Change `2.0` to the desired number of seconds.
+                    self.AcquireDATA()
+                }
+                
+                
                 
             }
-            
         }
-        
         //adding a text field to our alert
         alert.addTextField { (AlertField) in
             //The placeholder of the text field
@@ -81,24 +131,23 @@ class HomeTableViewController: UITableViewController {
         alert.addAction(action)
         present(alert ,animated: true,completion: nil)
         
-        AcquireDATA()
+
+        
     }
+    
     
     
     //MARK: - Acquire DATA
     func AcquireDATA() {
+        //Sets Saucy sauce equal to all the sauce stored in the realm
         SauceySauce = realm.objects(Sauce.self)
         
-        self.tableView.reloadData()
+        tableView.reloadData()
+        print("reload Data")
     }
 }
 
-//    func tableView(_ tableView: UITableView, moveDataItem from: IndexPath, to: IndexPath) {
-//            let fromDataItem: DataItem = data.items[from.item]
-//            data.items.remove(at: from.item)
-//            data.items.insert(fromDataItem, at: to.item)
-//        }
-//
+
 
 
 

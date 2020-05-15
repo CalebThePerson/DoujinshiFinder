@@ -109,7 +109,10 @@ func ParseJSON(_ data: Data) {
         
         print("Beggening to save")
         
-        Save(sauce: newSauce)
+        DispatchQueue.main.async {
+            Save(sauce: newSauce)
+            
+        }
         
         
         

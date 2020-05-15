@@ -4,19 +4,19 @@ PODS:
   - Realm/Headers (4.4.1)
   - RealmSwift (4.4.1):
     - Realm (= 4.4.1)
-  - SwiftDragAndDrop (0.4.0)
   - SwipeCellKit (2.7.1)
+  - SwipeMenuViewController (4.1.0)
 
 DEPENDENCIES:
   - RealmSwift
-  - SwiftDragAndDrop
   - SwipeCellKit (from `https://github.com/SwipeCellKit/SwipeCellKit.git`, branch `develop`)
+  - SwipeMenuViewController
 
 SPEC REPOS:
   trunk:
     - Realm
     - RealmSwift
-    - SwiftDragAndDrop
+    - SwipeMenuViewController
 
 EXTERNAL SOURCES:
   SwipeCellKit:
@@ -31,9 +31,9 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Realm: 4eb04d7487bd43c0581256f40b424eafb711deff
   RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
-  SwiftDragAndDrop: ca3d580d48bdb06674010fcb4b99bb0918a7a039
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
+  SwipeMenuViewController: 94fac81cc192d9f08f218fe4c0c853569b735e1f
 
-PODFILE CHECKSUM: 2f5370e5237bb58e33d07ce880d44f6ef77125a4
+PODFILE CHECKSUM: 6ecfbbb945faaeb24da5ed925ad24aa2ec21420b
 
 COCOAPODS: 1.9.1
