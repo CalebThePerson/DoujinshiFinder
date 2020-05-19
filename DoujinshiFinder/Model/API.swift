@@ -94,100 +94,153 @@ func ParseJSON(_ data: Data) {
         let Number = DecodedData.num_pages
         let welp = 0..<DecodedData.tags.count
         var AllTags = List<String>()
-        for number in welp {
-            let Tags = DecodedData.tags[number].name
-            AllTags.append(Tags)
-        }
+        
+        //        print("Beggingn this hell hole we call saving ")
+        //        DispatchQueue.main.async {
+        //            do {
+        //                print("Writing")
+        //                try realm.write {
+        //
+        //                    let ID = DecodedData.id
+        //
+        //                    let newSauce = Sauce()
+        //                    newSauce.name = Title
+        //                    newSauce.pgs = Number
+        //                    //        newSauce.tags = AllTags
+        //                    newSauce.id = ID
+        //                    print("Assinged the first few things")
+        //                    let ParentSauce = newSauce
+        //
+        //                    for number in welp {
+        //                        let SauceTags = NiceTags()
+        //                        let Tags = DecodedData.tags[number].name
+        //                        SauceTags.tags = Tags
+        //                        newSauce.tags.append(SauceTags)
+        //
+        //                    }
+        //                    print("Tags assigned")
+        //                }
+        //            } catch {
+        //                print(error)
+        //            }
+        //
+        //        }
+        //    } catch {
+        //        print(error)
+        //    }
+        
+        
         let ID = DecodedData.id
         
         let newSauce = Sauce()
         newSauce.name = Title
         newSauce.pgs = Number
-        newSauce.tags = AllTags
+        //        newSauce.tags = AllTags
         newSauce.id = ID
-        print("Succ assigned the varibles")
+        print("Assinged the first few things")
         
-        print("Beggening to save")
-        
-        DispatchQueue.main.async {
-            Save(sauce: newSauce)
+        for number in welp {
+            let SauceTags = NiceTags()
+            let Tags = DecodedData.tags[number].name
+            SauceTags.tags = Tags
+            newSauce.tags.append(SauceTags)
             
         }
-        
-        
-        
+        Save(sauce: newSauce)
     } catch {
         print(error)
     }
     
-}
-
-//func RelatedJSON(_ data: Data) {
-//    let decoder = JSONDecoder()
-//
-//    do {
-//        let DecodedData = try decoder.decode(Response.self, from: data)
-//        let welp = 0..<DecodedData.result.count
-//        for number in welp {
-//            let Title = DecodedData.result[number].title.english
-//        }
-//
-//    } catch {
-//        print(error.localizedDescription)
-//    }
-//
-//}
-
-//func DetailJSON(_ data: Data) {
-//    let decoder = JSONDecoder()
-//
-//    do {
-//        let DecodedData = try decoder.decode(SearchData.self, from: data)
-//        if DecodedData.result.count == 0 {
-//            print("No Hentai to match your sick fantasies")
-//        }
-//        let welp = 0..<DecodedData.result.count
-//        for number in welp {
-//            let title = DecodedData.result[number].title.english
-//            print(title)
-//        }
-//        print("------------------------")
-//
-//    } catch {
-//        print(error.localizedDescription)
-//    }
-//
-//}
-
-struct MyData: Codable {
-    let id : Int
-    let title: Title
-    let num_pages: Int
-    let tags: [Tags]
     
-}
-
-struct Title: Codable {
-    let english : String
-    let japanese : String
-}
-
-struct NumOfPages: Codable{
-    let num_pages: Int
-}
-
-struct Tags: Codable {
-    let name: String
-}
-
-struct Result: Codable {
-    let title: Title
-}
-
-struct Response: Codable {
-    let result : [Result]
-}
-
-struct SearchData: Codable {
-    let result : [Result]
+    
+    
+    
+    
+    
+    
+    //        Saucetags.tags = AllTags
+    
+    
+    //    print("Succ assigned the varibles")
+    //
+    //    print("Beggening to save")
+    
+    //        DispatchQueue.main.async {
+    //            Save(sauce: newSauce)
+    //
+    //
+    //        }
+    
+    
+    
+    
+    //func RelatedJSON(_ data: Data) {
+    //    let decoder = JSONDecoder()
+    //
+    //    do {
+    //        let DecodedData = try decoder.decode(Response.self, from: data)
+    //        let welp = 0..<DecodedData.result.count
+    //        for number in welp {
+    //            let Title = DecodedData.result[number].title.english
+    //        }
+    //
+    //    } catch {
+    //        print(error.localizedDescription)
+    //    }
+    //
+    //}
+    
+    //func DetailJSON(_ data: Data) {
+    //    let decoder = JSONDecoder()
+    //
+    //    do {
+    //        let DecodedData = try decoder.decode(SearchData.self, from: data)
+    //        if DecodedData.result.count == 0 {
+    //            print("No Hentai to match your sick fantasies")
+    //        }
+    //        let welp = 0..<DecodedData.result.count
+    //        for number in welp {
+    //            let title = DecodedData.result[number].title.english
+    //            print(title)
+    //        }
+    //        print("------------------------")
+    //
+    //    } catch {
+    //        print(error.localizedDescription)
+    //    }
+    //
+    //}
+    
+    struct MyData: Codable {
+        let id : Int
+        let title: Title
+        let num_pages: Int
+        let tags: [Tags]
+        
+    }
+    
+    struct Title: Codable {
+        let english : String
+        let japanese : String
+    }
+    
+    struct NumOfPages: Codable{
+        let num_pages: Int
+    }
+    
+    struct Tags: Codable {
+        let name: String
+    }
+    
+    struct Result: Codable {
+        let title: Title
+    }
+    
+    struct Response: Codable {
+        let result : [Result]
+    }
+    
+    struct SearchData: Codable {
+        let result : [Result]
+    }
 }

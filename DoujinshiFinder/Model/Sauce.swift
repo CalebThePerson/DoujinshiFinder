@@ -11,7 +11,7 @@ import RealmSwift
 
 class Sauce: Object {
     @objc dynamic var name: String = ""
-    var tags = List<String>()
+    var tags = List<NiceTags>()
 //    var Related = List<String>()
     @objc dynamic var pgs: Int = 0
     @objc dynamic var id: Int = 0

@@ -24,6 +24,8 @@ class HomeTableViewController: UITableViewController {
         
         AcquireDATA()
         
+        tableView.delegate = self
+        
         tableView.rowHeight = 50
     }
     //A list of Sauce objects
@@ -50,36 +52,49 @@ class HomeTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-                
-        performSegue(withIdentifier: "GoToCustom", sender: self)
-        
-        tableView.reloadData()
-    }
+//    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+//        performSegue(withIdentifier: "Help", sender: self)
+//
+//        tableView.reloadData()
+//    }
     
-    //For some reason this shit doesn't work 
+    
+   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       print("Selected PLEASE")
+    
+    performSegue(withIdentifier: "GoToCustom", sender: self)
+    
+    tableView.reloadData()
+    
+    tableView.deselectRow(at: indexPath, animated: true)
+}
+
 //    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
 //
 //        print("Selected")
 //
-//        performSegue(withIdentifier: "GoToCustom", sender: self)
+//        performSegue(withIdentifier: "help", sender: self)
+//
 //
 //        tableView.reloadData()
+//
 //        tableView.deselectRow(at: indexPath, animated: true)
 //
 //
+//
 //    }
-    
+//
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! CustomViewController
-        
-        let OtherVC = InfoUITableViewController()
+        let OtherVC = DetailViewController()
+       
         
         if let indexPath = tableView.indexPathForSelectedRow{
             
-            if let SauceID = SauceySauce?[indexPath.row].id {
-                vc.SauceID = SauceID
+            if let Sauce = SauceySauce?[indexPath.row] {
+                vc.SelectedSauce = SauceySauce?[indexPath.row]
                 OtherVC.SelectedSauce = SauceySauce?[indexPath.row]
+
                 
             }
             
@@ -112,9 +127,10 @@ class HomeTableViewController: UITableViewController {
                 //Then runs URLCreatin that's inside API
                 URLCreation(with: ID)
                 //This delay stops this whole block from running too fast and not allowing the data to be reloaded
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { // Change `2.0` to the desired number of seconds.
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { // Change `2.0` to the desired number of seconds.
                     self.AcquireDATA()
                 }
+                print("DONE")
                 
                 
                 

@@ -12,32 +12,51 @@ import RealmSwift
 class DetailViewController: UIViewController {
     
     let realm = try! Realm()
-
+    
+    var SauceName: String? {
+        didSet{
+            //            AcquireData()
+        }
+    }
+    
+    var SelectedSauce: Sauce? {
+        
+        didSet{
+//            AcquireData()
+        }
+    }
+    
     @IBOutlet weak var NumberOfPagesLabel: UILabel!
     @IBOutlet weak var TitleLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Did LOAD")
         
         AcquireData()
-
+        
+        
+        
         // Do any additional setup after loading the view.
     }
-    var SelectedSauce: Sauce? {
-        
-        didSet{
-            AcquireData()
-        }
-    }
+    
+    
+    
     
     var TheSauce: Results<Sauce>?
     var num: Int?
     
-
+    
+    
     
     
     func AcquireData() {
-        TheSauce = realm.objects(Sauce.self).filter("name matches @%",SelectedSauce?.name)
-        print(TheSauce)
+        if let Sauce = SelectedSauce {
+            TitleLabel.text = Sauce.name
+            NumberOfPagesLabel.text = String(Sauce.pgs)
+        }
+        print("DOne")
+        
+        
     }
-
+    
 }
