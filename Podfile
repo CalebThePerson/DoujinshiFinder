@@ -10,6 +10,7 @@ target 'DoujinshiFinder' do
   pod 'RealmSwift'
   pod 'SwipeCellKit', :git => 'https://github.com/SwipeCellKit/SwipeCellKit.git', :branch => 'develop'
   pod 'SwipeMenuViewController'
+  pod 'SwipeableTabBarController'
 
 
 
