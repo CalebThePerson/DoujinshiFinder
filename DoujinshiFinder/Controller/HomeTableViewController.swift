@@ -71,18 +71,11 @@ class HomeTableViewController: UITableViewController {
 //    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! CustomViewController
+        let vc = segue.destination as! SwipeableTabBarViewController
         
-        let OtherVC = InfoUITableViewController()
         
         if let indexPath = tableView.indexPathForSelectedRow{
-            
-            if let SauceID = SauceySauce?[indexPath.row].id {
-                vc.SauceID = SauceID
-                OtherVC.SelectedSauce = SauceySauce?[indexPath.row]
-                
-            }
-            
+                        
         }
     }
     

@@ -13,19 +13,17 @@ class DetailViewController: UIViewController {
     
     let realm = try! Realm()
 
-    @IBOutlet weak var NumberOfPagesLabel: UILabel!
-    @IBOutlet weak var TitleLabel: UILabel!
+
+    @IBOutlet weak var Label: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        AcquireData()
 
         // Do any additional setup after loading the view.
     }
     var SelectedSauce: Sauce? {
         
         didSet{
-            AcquireData()
         }
     }
     
@@ -36,8 +34,6 @@ class DetailViewController: UIViewController {
     
     
     func AcquireData() {
-        TheSauce = realm.objects(Sauce.self).filter("name matches @%",SelectedSauce?.name)
-        print(TheSauce)
     }
 
 }
