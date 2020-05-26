@@ -50,12 +50,7 @@ class HomeTableViewController: UITableViewController {
         return cell
     }
     
-    //    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-    //
-    //        performSegue(withIdentifier: "GoToCustom", sender: self)
-    //
-    //        tableView.reloadData()
-    //    }
+
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "GoToCustom", sender: self)
@@ -65,19 +60,7 @@ class HomeTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        let vc = segue.destination as! SwipeableTabBarViewController
-    //
-    //
-    //        if let indexPath = tableView.indexPathForSelectedRow{
-    //            let OtherVC = DetailViewController()
-    //            OtherVC.SelectedSauce = SauceySauce?[indexPath.row]
-    //            OtherVC.num = indexPath.row
-    //
-    //
-    //        }
-    //    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! SwipeableTabBarViewController

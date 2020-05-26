@@ -83,6 +83,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C32E6C46247DCC1A00F51EEF /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				C32E6C42247A2B3F00F51EEF /* TestingViewController.swift */,
+			);
+			path = Testing;
+			sourceTree = "<group>";
+		};
 		C35ABCA7246A885B00F3A83E = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +117,7 @@
 				C35ABCD1246B4AF400F3A83E /* Model */,
 				C35ABCCB246B473C00F3A83E /* View */,
 				C35ABCCC246B474400F3A83E /* Controller */,
+				C32E6C46247DCC1A00F51EEF /* Testing */,
 				C35ABCBC246A885D00F3A83E /* Assets.xcassets */,
 				C35ABCBE246A885D00F3A83E /* LaunchScreen.storyboard */,
 				C35ABCC1246A885D00F3A83E /* Info.plist */,
@@ -132,7 +141,6 @@
 				C32E6C40247A28F400F51EEF /* SwipeableTabBarViewController.swift */,
 				C36CA060246E210F00980A59 /* DetailViewController.swift */,
 				C3F1C978246CCAF70033F195 /* InfoUITableViewController.swift */,
-				C32E6C42247A2B3F00F51EEF /* TestingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

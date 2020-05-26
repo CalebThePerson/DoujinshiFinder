@@ -14,19 +14,18 @@ class InfoUITableViewController: UITableViewController {
     
     var SelectedSauce: Sauce? {
         didSet {
-            print("1st")
+//First
             AcquireData()
         }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print(Tags)
-        print("yeth")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("3rd")
+//3rd
         print("Loaded")
 
         tableView.register(UINib(nibName: "DetailsTableViewCell", bundle: nil), forCellReuseIdentifier: "Super")
@@ -45,7 +44,7 @@ class InfoUITableViewController: UITableViewController {
     //MARK: - Data Manipulation
     
     func AcquireData() {
-        print("2nd")
+//2nd
         if let Sauce = SelectedSauce {
             Tags = Sauce.tags
         }
@@ -59,8 +58,7 @@ class InfoUITableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("4th")
-        
+//4th
         let cell = tableView.dequeueReusableCell(withIdentifier: "Super", for: indexPath) as! DetailsTableViewCell
         
         //This isn't running, and just uses the default text inside the label
@@ -78,7 +76,7 @@ class InfoUITableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of row
-        print("5th")
+//5th
         //Returns 7 because tags is still nill
         return Tags?.count ?? 7
     }

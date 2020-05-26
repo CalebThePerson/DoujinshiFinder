@@ -42,45 +42,11 @@ func performRequest(with URLString: String,with RelatedString: String) {
                 ParseJSON(Data!)
             }
             
-            
-            //            if let SafeData = Data {
-            //                print("First Parse been called")
-            //            }
+
         }
         Task.resume()
     }
 }
-//    if let Relatedurl = URL(string: RelatedString) {
-//        let Session = URLSession(configuration: .default)
-//
-//        let Task = Session.dataTask(with: Relatedurl) { (Data, URLResponse, Error) in
-//            if Error != nil {
-//                print(Error!)
-//            }
-//
-//            if let SafeData = Data {
-//                RelatedJSON(SafeData)
-//                print("second parse called")
-//            }
-//        }
-//        Task.resume()
-//    }
-
-//    if let searchurl = URL(string: searchString) {
-//        let Session = URLSession(configuration: .default)
-//
-//        let Task = Session.dataTask(with: searchurl) { (Data, URLResponse, Error) in
-//            if Error != nil {
-//                print(Error!)
-//
-//            }
-//            if let SafeData = Data {
-//                DetailJSON(SafeData)
-//            }
-//        }
-//        Task.resume()
-//    }
-
 
 
 
@@ -97,39 +63,7 @@ func ParseJSON(_ data: Data) {
         let welp = 0..<DecodedData.tags.count
         var AllTags = List<String>()
         
-        //        print("Beggingn this hell hole we call saving ")
-        //        DispatchQueue.main.async {
-        //            do {
-        //                print("Writing")
-        //                try realm.write {
-        //
-        //                    let ID = DecodedData.id
-        //
-        //                    let newSauce = Sauce()
-        //                    newSauce.name = Title
-        //                    newSauce.pgs = Number
-        //                    //        newSauce.tags = AllTags
-        //                    newSauce.id = ID
-        //                    print("Assinged the first few things")
-        //                    let ParentSauce = newSauce
-        //
-        //                    for number in welp {
-        //                        let SauceTags = NiceTags()
-        //                        let Tags = DecodedData.tags[number].name
-        //                        SauceTags.tags = Tags
-        //                        newSauce.tags.append(SauceTags)
-        //
-        //                    }
-        //                    print("Tags assigned")
-        //                }
-        //            } catch {
-        //                print(error)
-        //            }
-        //
-        //        }
-        //    } catch {
-        //        print(error)
-        //    }
+
         
         
         let ID = DecodedData.id
@@ -153,6 +87,45 @@ func ParseJSON(_ data: Data) {
     }
 }
 
+
+
+
+struct MyData: Codable {
+    let id : Int
+    let title: Title
+    let num_pages: Int
+    let tags: [Tags]
+    
+}
+
+struct Title: Codable {
+    let english : String
+    let japanese : String
+}
+
+struct NumOfPages: Codable{
+    let num_pages: Int
+}
+
+struct Tags: Codable {
+    let name: String
+}
+
+struct Result: Codable {
+    let title: Title
+}
+
+struct Response: Codable {
+    let result : [Result]
+}
+
+struct SearchData: Codable {
+    let result : [Result]
+}
+
+
+
+//MARK: - Commetn Section
 
 //func RelatedJSON(_ data: Data) {
 //    let decoder = JSONDecoder()
@@ -191,35 +164,68 @@ func ParseJSON(_ data: Data) {
 //
 //}
 
-struct MyData: Codable {
-    let id : Int
-    let title: Title
-    let num_pages: Int
-    let tags: [Tags]
-    
-}
+//        print("Beggingn this hell hole we call saving ")
+//        DispatchQueue.main.async {
+//            do {
+//                print("Writing")
+//                try realm.write {
+//
+//                    let ID = DecodedData.id
+//
+//                    let newSauce = Sauce()
+//                    newSauce.name = Title
+//                    newSauce.pgs = Number
+//                    //        newSauce.tags = AllTags
+//                    newSauce.id = ID
+//                    print("Assinged the first few things")
+//                    let ParentSauce = newSauce
+//
+//                    for number in welp {
+//                        let SauceTags = NiceTags()
+//                        let Tags = DecodedData.tags[number].name
+//                        SauceTags.tags = Tags
+//                        newSauce.tags.append(SauceTags)
+//
+//                    }
+//                    print("Tags assigned")
+//                }
+//            } catch {
+//                print(error)
+//            }
+//
+//        }
+//    } catch {
+//        print(error)
+//    }
 
-struct Title: Codable {
-    let english : String
-    let japanese : String
-}
+//    if let Relatedurl = URL(string: RelatedString) {
+//        let Session = URLSession(configuration: .default)
+//
+//        let Task = Session.dataTask(with: Relatedurl) { (Data, URLResponse, Error) in
+//            if Error != nil {
+//                print(Error!)
+//            }
+//
+//            if let SafeData = Data {
+//                RelatedJSON(SafeData)
+//                print("second parse called")
+//            }
+//        }
+//        Task.resume()
+//    }
 
-struct NumOfPages: Codable{
-    let num_pages: Int
-}
+//    if let searchurl = URL(string: searchString) {
+//        let Session = URLSession(configuration: .default)
+//
+//        let Task = Session.dataTask(with: searchurl) { (Data, URLResponse, Error) in
+//            if Error != nil {
+//                print(Error!)
+//
+//            }
+//            if let SafeData = Data {
+//                DetailJSON(SafeData)
+//            }
+//        }
+//        Task.resume()
+//    }
 
-struct Tags: Codable {
-    let name: String
-}
-
-struct Result: Codable {
-    let title: Title
-}
-
-struct Response: Codable {
-    let result : [Result]
-}
-
-struct SearchData: Codable {
-    let result : [Result]
-}

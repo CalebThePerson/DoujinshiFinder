@@ -20,20 +20,18 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var PageNumberLabel: UILabel!
     
     //Literally sometimes a hit or miss i genuinly dont fuckin know the fuck is wrong with this issue bois
+    //If i print here it will run faster on start up, look at this later
         override func viewDidLoad() {
             super.viewDidLoad()
 //            print("1st")
-    
-//            NameLabel.text = Defaults.object(forKey: "Name") as! String
-//            PageNumberLabel.text = Defaults.object(forKey: "Pages") as! String
+
     
         }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        print("2nd")
-//        NameLabel.text = Defaults.object(forKey: "Name") as! String
-//        PageNumberLabel.text = Defaults.object(forKey: "Pages") as! String
+
         
     }
     
@@ -58,24 +56,12 @@ class DetailViewController: UIViewController {
         NameLabel.text = Defaults.object(forKey: "Name") as! String
         PageNumberLabel.text = Defaults.object(forKey: "Pages") as! String
         
-        // Do any additional setup after loading the view.
     }
     
     
     
     
     
-    var TheSauce: Sauce?
-    
-    
-    func AcquireData() {
-        
-    }
-    
-    func ReloadAgain() {
-        
-        
-    }
     
     
     
