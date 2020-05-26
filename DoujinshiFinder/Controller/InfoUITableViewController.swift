@@ -10,113 +10,76 @@ import UIKit
 import RealmSwift
 
 class InfoUITableViewController: UITableViewController {
-
-    let Defaults = UserDefaults.standard
-
+    
+    
     var SelectedSauce: Sauce? {
-        didSet{
+        didSet {
             print("1st")
             AcquireData()
-            
-            
         }
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//
-//        print("Loaded")
-//
-//        tableView.register(UINib(nibName: "DetailsTableViewCell", bundle: nil), forCellReuseIdentifier: "Super")
-//        tableView.dataSource = self
-//
-//        tableView.reloadData()
-//
-////        AcquireData()
-//
-//
-//
-//
-//
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(Tags)
+        print("yeth")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("2nd")
+        print("3rd")
         print("Loaded")
-        
+
         tableView.register(UINib(nibName: "DetailsTableViewCell", bundle: nil), forCellReuseIdentifier: "Super")
         tableView.dataSource = self
-        
 
-        
+        //Returns nill even though i changed the variable in acquiredata
+//        print(Tags)
+
         tableView.reloadData()
-
-//        AcquireData()
-        print("Yeth")
-
-        print("Yeth")
-
     }
     
     let realm = try! Realm()
     
-    public var Tags: Results<NiceTags>?
+    var Tags: List<NiceTags>?
     
-
+    //MARK: - Data Manipulation
+    
+    func AcquireData() {
+        print("2nd")
+        if let Sauce = SelectedSauce {
+            Tags = Sauce.tags
+        }
+        print(SelectedSauce?.tags)
+        Tags = SelectedSauce?.tags
+//            print(self.Tags)
+        tableView.reloadData()
+    }
+    
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("Started")
-        
+        print("4th")
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Super", for: indexPath) as! DetailsTableViewCell
         
+        //This isn't running, and just uses the default text inside the label
         if let TheTags = Tags?[indexPath.row] {
             cell.Inflabel.text = TheTags.tags
+            print("WOrked?")
         }
         
         
         return cell
     }
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 1
-//    }
-
+    
+ 
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        if let help = Tags?.count {
-            print("yeth")
-            return help
-        } else {
-            return 7
-        }
+        // #warning Incomplete implementation, return the number of row
+        print("5th")
+        //Returns 7 because tags is still nill
+        return Tags?.count ?? 7
     }
-    
-
-    
-    var help: NiceTags?
-    
-    //MARK: - Data Manipulation
-    
-    func AcquireData() {
-        if let Sauce = SelectedSauce {
-            Tags = Sauce.tags.sorted(byKeyPath: "tags", ascending: true)
-//            SelectedSauce?.tags.sorted(byKeyPath: "tags", ascending: true)
-//            print(Tags)
-            print(Tags?.count)
-            
-        }
-        
-        tableView.reloadData()
-    }
-    
-    
-    
-
-
-
-
 }

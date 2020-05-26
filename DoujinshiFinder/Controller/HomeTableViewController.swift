@@ -103,7 +103,7 @@ class HomeTableViewController: UITableViewController {
         
         var textfield = UITextField()
         
-        let alert = UIAlertController(title: "Add", message: "Insert the sauce you want info on", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Search", message: "Insert the sauce you want info on", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add and Find", style: .default) { (Action) in
             //Doesn't let the user enter just nothing and doesn't break the code
@@ -127,6 +127,10 @@ class HomeTableViewController: UITableViewController {
                 
             }
         }
+        
+        let action2 = UIAlertAction(title: "Dismiss", style: .default) { (Action) in
+            //Dismisses if it was a mistake
+        }
         //adding a text field to our alert
         alert.addTextField { (AlertField) in
             //The placeholder of the text field
@@ -135,6 +139,7 @@ class HomeTableViewController: UITableViewController {
             //Bring the field function snad etc here
             textfield = AlertField
         }
+        alert.addAction(action2)
         alert.addAction(action)
         present(alert ,animated: true,completion: nil)
         
