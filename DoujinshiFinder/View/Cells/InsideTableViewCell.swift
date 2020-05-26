@@ -10,7 +10,6 @@ import UIKit
 
 class InsideTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var ImageView: UIImageView!
     @IBOutlet weak var TheName: UILabel!
     @IBOutlet weak var SauceNumbers: UILabel!
     

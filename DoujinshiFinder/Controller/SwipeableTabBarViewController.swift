@@ -13,7 +13,8 @@ class SwipeableTabBarViewController: SwipeableTabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        swipeAnimatedTransitioning?.animationType = SwipeAnimationType.sideBySide
+//        isCyclingEnabled = true
         // Do any additional setup after loading the view.
     }
     

@@ -12,28 +12,73 @@ import RealmSwift
 class DetailViewController: UIViewController {
     
     let realm = try! Realm()
-
-
-    @IBOutlet weak var Label: UILabel!
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    let Defaults = UserDefaults.standard
+    
+    
+    
+    @IBOutlet weak var NameLabel: UILabel!
+    @IBOutlet weak var PageNumberLabel: UILabel!
+    
+    //Literally sometimes a hit or miss i genuinly dont fuckin know the fuck is wrong with this issue bois
+        override func viewDidLoad() {
+            super.viewDidLoad()
+//            print("1st")
+    
+//            NameLabel.text = Defaults.object(forKey: "Name") as! String
+//            PageNumberLabel.text = Defaults.object(forKey: "Pages") as! String
+    
+        }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        print("2nd")
+//        NameLabel.text = Defaults.object(forKey: "Name") as! String
+//        PageNumberLabel.text = Defaults.object(forKey: "Pages") as! String
         
-
-        // Do any additional setup after loading the view.
     }
+    
     var SelectedSauce: Sauce? {
         
-        didSet{
+        didSet {
+//            print("3rd")
+            if let Sauce = SelectedSauce {
+                var SauceName = Sauce.name
+                Defaults.set(SauceName, forKey: "Name")
+                var SaucePages = String(Sauce.pgs)
+                Defaults.set(SaucePages, forKey: "Pages")
+            }
         }
     }
     
-    var TheSauce: Results<Sauce>?
-    var num: Int?
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        print("4th")
+        
+        NameLabel.text = Defaults.object(forKey: "Name") as! String
+        PageNumberLabel.text = Defaults.object(forKey: "Pages") as! String
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    
+    
+    
+    
+    var TheSauce: Sauce?
     
     
     func AcquireData() {
+        
     }
-
+    
+    func ReloadAgain() {
+        
+        
+    }
+    
+    
+    
 }
+
+

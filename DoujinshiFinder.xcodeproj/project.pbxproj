@@ -10,6 +10,7 @@
 		01437E120D0C980A376A2C47 /* Pods_DoujinshiFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D1D8E487487ED45A253C42C /* Pods_DoujinshiFinder.framework */; };
 		C32E6C41247A28F400F51EEF /* SwipeableTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32E6C40247A28F400F51EEF /* SwipeableTabBarViewController.swift */; };
 		C32E6C43247A2B3F00F51EEF /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32E6C42247A2B3F00F51EEF /* TestingViewController.swift */; };
+		C32E6C45247C590D00F51EEF /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32E6C44247C590C00F51EEF /* Tags.swift */; };
 		C35ABCB4246A885B00F3A83E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35ABCB3246A885B00F3A83E /* AppDelegate.swift */; };
 		C35ABCB6246A885B00F3A83E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35ABCB5246A885B00F3A83E /* SceneDelegate.swift */; };
 		C35ABCBB246A885B00F3A83E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35ABCB9246A885B00F3A83E /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		5B03092A1E663E6D8B3D6A25 /* Pods-DoujinshiFinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoujinshiFinder.release.xcconfig"; path = "Target Support Files/Pods-DoujinshiFinder/Pods-DoujinshiFinder.release.xcconfig"; sourceTree = "<group>"; };
 		C32E6C40247A28F400F51EEF /* SwipeableTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableTabBarViewController.swift; sourceTree = "<group>"; };
 		C32E6C42247A2B3F00F51EEF /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
+		C32E6C44247C590C00F51EEF /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		C35ABCB0246A885B00F3A83E /* DoujinshiFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoujinshiFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35ABCB3246A885B00F3A83E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C35ABCB5246A885B00F3A83E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,8 +130,8 @@
 			children = (
 				C35ABCC9246B41F000F3A83E /* HomeTableViewController.swift */,
 				C32E6C40247A28F400F51EEF /* SwipeableTabBarViewController.swift */,
-				C3F1C978246CCAF70033F195 /* InfoUITableViewController.swift */,
 				C36CA060246E210F00980A59 /* DetailViewController.swift */,
+				C3F1C978246CCAF70033F195 /* InfoUITableViewController.swift */,
 				C32E6C42247A2B3F00F51EEF /* TestingViewController.swift */,
 			);
 			path = Controller;
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				C35ABCCF246B4AEE00F3A83E /* Sauce.swift */,
+				C32E6C44247C590C00F51EEF /* Tags.swift */,
 				C35ABCD6246B590200F3A83E /* API.swift */,
 				C35ABCD8246B5A1B00F3A83E /* Save and Such.swift */,
 			);
@@ -278,6 +281,7 @@
 				C3F1C979246CCAF70033F195 /* InfoUITableViewController.swift in Sources */,
 				C32E6C43247A2B3F00F51EEF /* TestingViewController.swift in Sources */,
 				C35ABCD9246B5A1B00F3A83E /* Save and Such.swift in Sources */,
+				C32E6C45247C590D00F51EEF /* Tags.swift in Sources */,
 				C35ABCB4246A885B00F3A83E /* AppDelegate.swift in Sources */,
 				C3F1C976246CCA700033F195 /* DetailsTableViewCell.swift in Sources */,
 				C35ABCB6246A885B00F3A83E /* SceneDelegate.swift in Sources */,

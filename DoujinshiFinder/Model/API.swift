@@ -82,6 +82,8 @@ func performRequest(with URLString: String,with RelatedString: String) {
 //    }
 
 
+
+
 func ParseJSON(_ data: Data) {
     
     var sauce: Results<Sauce>
@@ -94,33 +96,63 @@ func ParseJSON(_ data: Data) {
         let Number = DecodedData.num_pages
         let welp = 0..<DecodedData.tags.count
         var AllTags = List<String>()
-        for number in welp {
-            let Tags = DecodedData.tags[number].name
-            AllTags.append(Tags)
-        }
+        
+        //        print("Beggingn this hell hole we call saving ")
+        //        DispatchQueue.main.async {
+        //            do {
+        //                print("Writing")
+        //                try realm.write {
+        //
+        //                    let ID = DecodedData.id
+        //
+        //                    let newSauce = Sauce()
+        //                    newSauce.name = Title
+        //                    newSauce.pgs = Number
+        //                    //        newSauce.tags = AllTags
+        //                    newSauce.id = ID
+        //                    print("Assinged the first few things")
+        //                    let ParentSauce = newSauce
+        //
+        //                    for number in welp {
+        //                        let SauceTags = NiceTags()
+        //                        let Tags = DecodedData.tags[number].name
+        //                        SauceTags.tags = Tags
+        //                        newSauce.tags.append(SauceTags)
+        //
+        //                    }
+        //                    print("Tags assigned")
+        //                }
+        //            } catch {
+        //                print(error)
+        //            }
+        //
+        //        }
+        //    } catch {
+        //        print(error)
+        //    }
+        
+        
         let ID = DecodedData.id
         
         let newSauce = Sauce()
         newSauce.name = Title
         newSauce.pgs = Number
-        newSauce.tags = AllTags
         newSauce.id = ID
-        print("Succ assigned the varibles")
+        print("Assinged the first few things")
         
-        print("Beggening to save")
-        
-        DispatchQueue.main.async {
-            Save(sauce: newSauce)
+        for number in welp {
+            let SauceTags = NiceTags()
+            let Tags = DecodedData.tags[number].name
+            SauceTags.tags = Tags
+            newSauce.tags.append(SauceTags)
             
         }
-        
-        
-        
+        Save(sauce: newSauce)
     } catch {
         print(error)
     }
-    
 }
+
 
 //func RelatedJSON(_ data: Data) {
 //    let decoder = JSONDecoder()
