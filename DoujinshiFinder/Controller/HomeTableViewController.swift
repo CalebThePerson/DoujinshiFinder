@@ -4,7 +4,11 @@
 //
 //  Created by Caleb Wheeler on 5/12/20.
 //  Copyright © 2020 Caleb Wheeler. All rights reserved.
-//
+
+
+
+
+//All the print statments help decipher which functions are being ran and when
 
 import UIKit
 import RealmSwift
@@ -15,13 +19,14 @@ class HomeTableViewController: UITableViewController {
     let realm = try! Realm()
     
     
-    var cellHeightsDictionary: [IndexPath: CGFloat] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Using the custom cell we made rather than the default one
         tableView.register(UINib(nibName: "InsideTableViewCell", bundle: nil), forCellReuseIdentifier: "CellCell")
         tableView.dataSource = self
         
+        //Calling this funciton to update the view and display the data
         AcquireDATA()
         
         tableView.rowHeight = 50
@@ -32,6 +37,7 @@ class HomeTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //Creates a number of rows corresponding to the amount of entries you have
         return SauceySauce?.count ?? 0
     }
     
@@ -45,35 +51,38 @@ class HomeTableViewController: UITableViewController {
             let ID = String(sauce.id)
             cell.SauceNumbers.text = ID
         }
+        
         cell.textLabel?.isUserInteractionEnabled = false
         
         return cell
     }
     
-
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Whenever a row is selected it should perform a segue
+        //that takes the user to the according sauce and tab bar view with the views Detail and Info
+        
         performSegue(withIdentifier: "GoToCustom", sender: self)
         
+        //Updates the view
         tableView.reloadData()
         
+        //Deselects the row after it is tapped
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! SwipeableTabBarViewController
-        let OtherVC = DetailViewController()
-        let LendMeYourEnergy = InfoUITableViewController()
-        
+        //Passes the selectedsauce you want to the SwipeTabBar controller
         if let indexPath = tableView.indexPathForSelectedRow {
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { // Change `2.0` to the desired number of seconds.
-                OtherVC.SelectedSauce = self.SauceySauce?[indexPath.row]
-                LendMeYourEnergy.SelectedSauce = self.SauceySauce?[indexPath.row]
-            }
+            vc.SelectedSauce = self.SauceySauce?[indexPath.row]
         }
+            
+        
+
         
     }
     

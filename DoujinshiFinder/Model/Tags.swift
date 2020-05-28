@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 
+//Another custom object we use
 class NiceTags: Object {
     @objc dynamic var tags: String = ""
     var ParentSauce = LinkingObjects(fromType: Sauce.self, property: "tags")

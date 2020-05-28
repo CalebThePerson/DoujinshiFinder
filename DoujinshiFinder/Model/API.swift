@@ -6,6 +6,8 @@
 //  Copyright © 2020 Caleb Wheeler. All rights reserved.
 //
 
+//THE API FILe
+
 import Foundation
 import RealmSwift
 
@@ -17,6 +19,7 @@ let relatedurl = "https://nhentai.net/api/gallery/\(Id)/related"
 let searchurl = "https://nhentai.net/api/galleries/search?query=\(search)"
 
 
+//Creates the URl and then calls perform request
 func URLCreation(with ID: String) {
     print("created")
     let url = "https://nhentai.net/api/gallery/\(ID)"
@@ -90,42 +93,10 @@ func ParseJSON(_ data: Data) {
 
 
 
-struct MyData: Codable {
-    let id : Int
-    let title: Title
-    let num_pages: Int
-    let tags: [Tags]
-    
-}
-
-struct Title: Codable {
-    let english : String
-    let japanese : String
-}
-
-struct NumOfPages: Codable{
-    let num_pages: Int
-}
-
-struct Tags: Codable {
-    let name: String
-}
-
-struct Result: Codable {
-    let title: Title
-}
-
-struct Response: Codable {
-    let result : [Result]
-}
-
-struct SearchData: Codable {
-    let result : [Result]
-}
-
 
 
 //MARK: - Commetn Section
+//Things that may be useful for me later
 
 //func RelatedJSON(_ data: Data) {
 //    let decoder = JSONDecoder()

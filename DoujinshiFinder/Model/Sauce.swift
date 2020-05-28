@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 
+//The object that we are saving to the data base
 class Sauce: Object {
     @objc dynamic var name: String = ""
     var tags = List<NiceTags>()

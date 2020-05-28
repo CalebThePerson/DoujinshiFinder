@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		01437E120D0C980A376A2C47 /* Pods_DoujinshiFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D1D8E487487ED45A253C42C /* Pods_DoujinshiFinder.framework */; };
 		C32E6C41247A28F400F51EEF /* SwipeableTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32E6C40247A28F400F51EEF /* SwipeableTabBarViewController.swift */; };
-		C32E6C43247A2B3F00F51EEF /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32E6C42247A2B3F00F51EEF /* TestingViewController.swift */; };
 		C32E6C45247C590D00F51EEF /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32E6C44247C590C00F51EEF /* Tags.swift */; };
+		C32E6C48247F397400F51EEF /* MyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32E6C47247F397400F51EEF /* MyData.swift */; };
 		C35ABCB4246A885B00F3A83E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35ABCB3246A885B00F3A83E /* AppDelegate.swift */; };
 		C35ABCB6246A885B00F3A83E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35ABCB5246A885B00F3A83E /* SceneDelegate.swift */; };
 		C35ABCBB246A885B00F3A83E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35ABCB9246A885B00F3A83E /* Main.storyboard */; };
@@ -33,8 +33,8 @@
 		476C2B91FF2B5C8FFB07FB93 /* Pods-DoujinshiFinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoujinshiFinder.debug.xcconfig"; path = "Target Support Files/Pods-DoujinshiFinder/Pods-DoujinshiFinder.debug.xcconfig"; sourceTree = "<group>"; };
 		5B03092A1E663E6D8B3D6A25 /* Pods-DoujinshiFinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoujinshiFinder.release.xcconfig"; path = "Target Support Files/Pods-DoujinshiFinder/Pods-DoujinshiFinder.release.xcconfig"; sourceTree = "<group>"; };
 		C32E6C40247A28F400F51EEF /* SwipeableTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableTabBarViewController.swift; sourceTree = "<group>"; };
-		C32E6C42247A2B3F00F51EEF /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
 		C32E6C44247C590C00F51EEF /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
+		C32E6C47247F397400F51EEF /* MyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyData.swift; sourceTree = "<group>"; };
 		C35ABCB0246A885B00F3A83E /* DoujinshiFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoujinshiFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35ABCB3246A885B00F3A83E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C35ABCB5246A885B00F3A83E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,14 +83,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C32E6C46247DCC1A00F51EEF /* Testing */ = {
-			isa = PBXGroup;
-			children = (
-				C32E6C42247A2B3F00F51EEF /* TestingViewController.swift */,
-			);
-			path = Testing;
-			sourceTree = "<group>";
-		};
 		C35ABCA7246A885B00F3A83E = {
 			isa = PBXGroup;
 			children = (
@@ -117,7 +109,6 @@
 				C35ABCD1246B4AF400F3A83E /* Model */,
 				C35ABCCB246B473C00F3A83E /* View */,
 				C35ABCCC246B474400F3A83E /* Controller */,
-				C32E6C46247DCC1A00F51EEF /* Testing */,
 				C35ABCBC246A885D00F3A83E /* Assets.xcassets */,
 				C35ABCBE246A885D00F3A83E /* LaunchScreen.storyboard */,
 				C35ABCC1246A885D00F3A83E /* Info.plist */,
@@ -151,6 +142,7 @@
 				C35ABCCF246B4AEE00F3A83E /* Sauce.swift */,
 				C32E6C44247C590C00F51EEF /* Tags.swift */,
 				C35ABCD6246B590200F3A83E /* API.swift */,
+				C32E6C47247F397400F51EEF /* MyData.swift */,
 				C35ABCD8246B5A1B00F3A83E /* Save and Such.swift */,
 			);
 			path = Model;
@@ -287,13 +279,13 @@
 				C36CA061246E210F00980A59 /* DetailViewController.swift in Sources */,
 				C35ABCCA246B41F000F3A83E /* HomeTableViewController.swift in Sources */,
 				C3F1C979246CCAF70033F195 /* InfoUITableViewController.swift in Sources */,
-				C32E6C43247A2B3F00F51EEF /* TestingViewController.swift in Sources */,
 				C35ABCD9246B5A1B00F3A83E /* Save and Such.swift in Sources */,
 				C32E6C45247C590D00F51EEF /* Tags.swift in Sources */,
 				C35ABCB4246A885B00F3A83E /* AppDelegate.swift in Sources */,
 				C3F1C976246CCA700033F195 /* DetailsTableViewCell.swift in Sources */,
 				C35ABCB6246A885B00F3A83E /* SceneDelegate.swift in Sources */,
 				C32E6C41247A28F400F51EEF /* SwipeableTabBarViewController.swift in Sources */,
+				C32E6C48247F397400F51EEF /* MyData.swift in Sources */,
 				C35ABCD0246B4AEE00F3A83E /* Sauce.swift in Sources */,
 				C35ABCD7246B590200F3A83E /* API.swift in Sources */,
 				C35ABCD4246B55AC00F3A83E /* InsideTableViewCell.swift in Sources */,

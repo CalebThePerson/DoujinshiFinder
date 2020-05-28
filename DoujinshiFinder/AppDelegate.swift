@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //print(Realm.Configuration.defaultConfiguration.fileURL)
         
+        //Initiating the Realm Database when the app is started
         do {
             _ = try Realm()
         } catch {

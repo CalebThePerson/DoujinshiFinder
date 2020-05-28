@@ -13,20 +13,34 @@ class SwipeableTabBarViewController: SwipeableTabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        swipeAnimatedTransitioning?.animationType = SwipeAnimationType.sideBySide
-//        isCyclingEnabled = true
+        swipeAnimatedTransitioning?.animationType = SwipeAnimationType.overlap
+        
         // Do any additional setup after loading the view.
+        print("order")
+
+    }
+    
+    var SelectedSauce: Sauce? {
+        didSet {
+            //When set this function is called
+            Data()
+        }
+    }
+    
+    func Data(){
+        //passes throuhg selected sauce to the corresponding views and populates them
+        //This was the biggest issue i have ever encountreered in mu life
+        let first_vc = self.viewControllers?.first as! DetailViewController
+        let last_vc = self.viewControllers?.last as! InfoUITableViewController
+        first_vc.SelectedSauce = SelectedSauce
+        last_vc.SelectedSauce = SelectedSauce
     }
     
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
 
 }

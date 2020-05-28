@@ -9,6 +9,8 @@
 import Foundation
 import RealmSwift
 
+//The save funcitn we will call throughout the project
+//Or we were suppose to meme
 let realm = try! Realm()
 
 func Save(sauce: Sauce) {

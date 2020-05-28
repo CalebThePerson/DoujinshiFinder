@@ -11,35 +11,36 @@ import RealmSwift
 
 class InfoUITableViewController: UITableViewController {
     
-    
     var SelectedSauce: Sauce? {
         didSet {
 //First
             AcquireData()
         }
     }
+    
+    let realm = try! Realm()
+    
+    var Tags: List<NiceTags>?
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(Tags)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //3rd
         print("Loaded")
-
         tableView.register(UINib(nibName: "DetailsTableViewCell", bundle: nil), forCellReuseIdentifier: "Super")
         tableView.dataSource = self
 
         //Returns nill even though i changed the variable in acquiredata
 //        print(Tags)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        self.tableView.reloadData()
+        }
 
-        tableView.reloadData()
     }
     
-    let realm = try! Realm()
-    
-    var Tags: List<NiceTags>?
     
     //MARK: - Data Manipulation
     
@@ -48,10 +49,6 @@ class InfoUITableViewController: UITableViewController {
         if let Sauce = SelectedSauce {
             Tags = Sauce.tags
         }
-        print(SelectedSauce?.tags)
-        Tags = SelectedSauce?.tags
-//            print(self.Tags)
-        tableView.reloadData()
     }
     
     
@@ -61,10 +58,8 @@ class InfoUITableViewController: UITableViewController {
 //4th
         let cell = tableView.dequeueReusableCell(withIdentifier: "Super", for: indexPath) as! DetailsTableViewCell
         
-        //This isn't running, and just uses the default text inside the label
         if let TheTags = Tags?[indexPath.row] {
             cell.Inflabel.text = TheTags.tags
-            print("WOrked?")
         }
         
         
@@ -73,11 +68,9 @@ class InfoUITableViewController: UITableViewController {
     
  
     
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of row
 //5th
-        //Returns 7 because tags is still nill
         return Tags?.count ?? 7
     }
 }
