@@ -11,6 +11,7 @@
 		C32E6C41247A28F400F51EEF /* SwipeableTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32E6C40247A28F400F51EEF /* SwipeableTabBarViewController.swift */; };
 		C32E6C45247C590D00F51EEF /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32E6C44247C590C00F51EEF /* Tags.swift */; };
 		C32E6C48247F397400F51EEF /* MyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32E6C47247F397400F51EEF /* MyData.swift */; };
+		C32E6C4A24809F1900F51EEF /* DeleteFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32E6C4924809F1800F51EEF /* DeleteFunction.swift */; };
 		C35ABCB4246A885B00F3A83E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35ABCB3246A885B00F3A83E /* AppDelegate.swift */; };
 		C35ABCB6246A885B00F3A83E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35ABCB5246A885B00F3A83E /* SceneDelegate.swift */; };
 		C35ABCBB246A885B00F3A83E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35ABCB9246A885B00F3A83E /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		C32E6C40247A28F400F51EEF /* SwipeableTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableTabBarViewController.swift; sourceTree = "<group>"; };
 		C32E6C44247C590C00F51EEF /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		C32E6C47247F397400F51EEF /* MyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyData.swift; sourceTree = "<group>"; };
+		C32E6C4924809F1800F51EEF /* DeleteFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFunction.swift; sourceTree = "<group>"; };
 		C35ABCB0246A885B00F3A83E /* DoujinshiFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoujinshiFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35ABCB3246A885B00F3A83E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C35ABCB5246A885B00F3A83E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				C35ABCD6246B590200F3A83E /* API.swift */,
 				C32E6C47247F397400F51EEF /* MyData.swift */,
 				C35ABCD8246B5A1B00F3A83E /* Save and Such.swift */,
+				C32E6C4924809F1800F51EEF /* DeleteFunction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				C35ABCB4246A885B00F3A83E /* AppDelegate.swift in Sources */,
 				C3F1C976246CCA700033F195 /* DetailsTableViewCell.swift in Sources */,
 				C35ABCB6246A885B00F3A83E /* SceneDelegate.swift in Sources */,
+				C32E6C4A24809F1900F51EEF /* DeleteFunction.swift in Sources */,
 				C32E6C41247A28F400F51EEF /* SwipeableTabBarViewController.swift in Sources */,
 				C32E6C48247F397400F51EEF /* MyData.swift in Sources */,
 				C35ABCD0246B4AEE00F3A83E /* Sauce.swift in Sources */,

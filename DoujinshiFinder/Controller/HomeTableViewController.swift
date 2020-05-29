@@ -13,15 +13,19 @@
 import UIKit
 import RealmSwift
 
-class HomeTableViewController: UITableViewController {
+class HomeTableViewController: UITableViewController, UIGestureRecognizerDelegate {
     
     
     let realm = try! Realm()
     
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupLongPressGesture()
+        
         //Using the custom cell we made rather than the default one
         tableView.register(UINib(nibName: "InsideTableViewCell", bundle: nil), forCellReuseIdentifier: "CellCell")
         tableView.dataSource = self
@@ -30,6 +34,8 @@ class HomeTableViewController: UITableViewController {
         AcquireDATA()
         
         tableView.rowHeight = 50
+        
+        tableView.separatorStyle = .singleLine
     }
     //A list of Sauce objects
     var SauceySauce: Results<Sauce>?
@@ -80,9 +86,9 @@ class HomeTableViewController: UITableViewController {
         if let indexPath = tableView.indexPathForSelectedRow {
             vc.SelectedSauce = self.SauceySauce?[indexPath.row]
         }
-            
         
-
+        
+        
         
     }
     
@@ -94,16 +100,19 @@ class HomeTableViewController: UITableViewController {
         
         
         var textfield = UITextField()
+        textfield.keyboardType = .numberPad
         
         let alert = UIAlertController(title: "Search", message: "Insert the sauce you want info on", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add and Find", style: .default) { (Action) in
             //Doesn't let the user enter just nothing and doesn't break the code
-            if textfield.text?.count == 0 {
-                textfield.placeholder = "Enter Numbers dweeb"
+            if textfield.text?.count == 0  || textfield.text!.count > 6 {
+                textfield.placeholder = "Enter Numbers dweeb and less than 6 digits"
                 self.present(alert ,animated: true,completion: nil)
                 
             }
+            
+            
             //saves the text field as an ID
             if let ID = textfield.text {
                 print(ID)
@@ -138,7 +147,58 @@ class HomeTableViewController: UITableViewController {
         
         
     }
+    //MARK: - Delete Functionality
     
+    //Programatically creating the long gesture
+    
+    func setupLongPressGesture() {
+        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(HomeTableViewController.handleLongPress(_:)))
+        longPressGesture.minimumPressDuration = 1.0 // 1 second press
+        longPressGesture.delegate = self
+        //Adding it to the view
+        self.view.addGestureRecognizer(longPressGesture)
+        
+    }
+    //This is the fucntion that is ran when the gesture is pressed
+    @objc func handleLongPress(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        
+        if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
+            
+            let touchPoint = longPressGestureRecognizer.location(in: self.view)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                
+                //The code that is executed
+                let alert = UIAlertController(title: "Delete", message: "Would you like to delete the selected Sauce", preferredStyle: .alert)
+                //if yeth is selected, the selected sauce is deleted via the deletesauce function
+                let Yesaction = UIAlertAction(title: "Yes", style: .default) { (Action) in
+                    if let SelectedSauce = self.SauceySauce?[indexPath.row] {
+                        DispatchQueue.main.async {
+                            DeleteSauce(with: SelectedSauce)
+                            
+                        }
+                        //Slowing it down so it doesn't crash
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // Change `2.0` to the desired number of seconds.
+                            self.AcquireDATA()
+                        }
+                        
+                        
+                    }
+                }
+                
+                let NoAction = UIAlertAction(title: "No", style: .default) { (Action) in
+                    //Basically dismisses
+                }
+                
+                //ADding the actions
+                alert.addAction(NoAction)
+                alert.addAction(Yesaction)
+                
+                //Presenting it
+                present(alert ,animated: true,completion: nil)
+                
+            }
+        }
+    }
     
     
     //MARK: - Acquire DATA
@@ -149,8 +209,31 @@ class HomeTableViewController: UITableViewController {
         tableView.reloadData()
         print("reload Data")
     }
+
+
+//MARK: - Tips Button
+    
+    @IBAction func Settings(_ sender: UIBarButtonItem) {
+        HelpFullTips()
+    }
+    
 }
 
+
+//MARK: - Helpful tip extenstion / function
+
+extension HomeTableViewController {
+    func HelpFullTips() {
+        let alert = UIAlertController(title: "Tips", message: "If you would like to delete the sauce, hold down on the sauce you want to delete until the notification is presented", preferredStyle: .alert)
+        
+        let Okay = UIAlertAction(title: "Okay", style: .default) { (Action) in
+            //Dismisses
+        }
+        
+        alert.addAction(Okay)
+        present(alert,animated: true,completion: nil)
+    }
+}
 
 
 

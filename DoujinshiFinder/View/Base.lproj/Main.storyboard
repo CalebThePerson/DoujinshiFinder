@@ -35,6 +35,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="g7U-md-Kaa">
+                        <barButtonItem key="leftBarButtonItem" image="gear" catalog="system" id="x2p-Yi-sUg">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <connections>
+                                <action selector="Settings:" destination="wbA-7I-RXd" id="lms-Nj-Kb2"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0gd-79-N4N">
                             <connections>
                                 <action selector="AddButton:" destination="wbA-7I-RXd" id="KmM-hg-hEW"/>
@@ -222,5 +228,6 @@
     <resources>
         <image name="folder" catalog="system" width="128" height="95"/>
         <image name="folder.fill" catalog="system" width="128" height="95"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
     </resources>
 </document>

@@ -32,6 +32,8 @@ class SwipeableTabBarViewController: SwipeableTabBarController {
         //This was the biggest issue i have ever encountreered in mu life
         let first_vc = self.viewControllers?.first as! DetailViewController
         let last_vc = self.viewControllers?.last as! InfoUITableViewController
+        first_vc.navigationItem.title = "Details"
+        last_vc.navigationItem.title = "Tags"
         first_vc.SelectedSauce = SelectedSauce
         last_vc.SelectedSauce = SelectedSauce
     }

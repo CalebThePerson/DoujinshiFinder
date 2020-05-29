@@ -29,6 +29,7 @@ class InfoUITableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //3rd
+
         print("Loaded")
         tableView.register(UINib(nibName: "DetailsTableViewCell", bundle: nil), forCellReuseIdentifier: "Super")
         tableView.dataSource = self
@@ -38,6 +39,8 @@ class InfoUITableViewController: UITableViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
         self.tableView.reloadData()
         }
+        
+        
 
     }
     
@@ -62,6 +65,7 @@ class InfoUITableViewController: UITableViewController {
             cell.Inflabel.text = TheTags.tags
         }
         
+        cell.isUserInteractionEnabled = false
         
         return cell
     }

@@ -23,11 +23,11 @@ class DetailViewController: UIViewController {
     //If i print here it will run faster on start up, look at this later
     override func viewDidLoad() {
         super.viewDidLoad()
+
         //            print("1st")
         //Calls these variabels and populates the views with them
-        NameLabel.text = Defaults.object(forKey: "Name") as! String
-        PageNumberLabel.text = Defaults.object(forKey: "Pages") as! String
-        
+        NameLabel.text = (Defaults.object(forKey: "Name") as! String)
+        PageNumberLabel.text = (Defaults.object(forKey: "Pages") as! String)
         
     }
     
@@ -44,9 +44,9 @@ class DetailViewController: UIViewController {
             //            print("3rd")
             //Saves the variables , in the user defaults
             if let Sauce = SelectedSauce {
-                var SauceName = Sauce.name
+                let SauceName = Sauce.name
                 Defaults.set(SauceName, forKey: "Name")
-                var SaucePages = String(Sauce.pgs)
+                let SaucePages = String(Sauce.pgs)
                 Defaults.set(SaucePages, forKey: "Pages")
             }
         }

@@ -45,7 +45,7 @@ func performRequest(with URLString: String,with RelatedString: String) {
                 ParseJSON(Data!)
             }
             
-
+            
         }
         Task.resume()
     }
@@ -66,7 +66,7 @@ func ParseJSON(_ data: Data) {
         let welp = 0..<DecodedData.tags.count
         var AllTags = List<String>()
         
-
+        
         
         
         let ID = DecodedData.id
@@ -84,7 +84,10 @@ func ParseJSON(_ data: Data) {
             newSauce.tags.append(SauceTags)
             
         }
-        Save(sauce: newSauce)
+        DispatchQueue.main.async {
+            Save(sauce: newSauce)
+            
+        }
     } catch {
         print(error)
     }
