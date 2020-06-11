@@ -1,6 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-DoujinshiFinder/Pods-DoujinshiFinder-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
 ${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework
-${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework
-${BUILT_PRODUCTS_DIR}/SwipeMenuViewController/SwipeMenuViewController.framework
 ${BUILT_PRODUCTS_DIR}/SwipeableTabBarController/SwipeableTabBarController.framework

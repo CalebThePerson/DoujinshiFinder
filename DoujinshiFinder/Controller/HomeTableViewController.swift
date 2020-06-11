@@ -13,16 +13,18 @@
 import UIKit
 import RealmSwift
 
-class HomeTableViewController: UITableViewController, UIGestureRecognizerDelegate {
+class HomeTableViewController: UITableViewController, UIGestureRecognizerDelegate, SauceDelegate {
     
     
     let realm = try! Realm()
+    var findthesauce = FindSauce()
     
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        findthesauce.Delegate = self
         
         setupLongPressGesture()
         
@@ -53,9 +55,13 @@ class HomeTableViewController: UITableViewController, UIGestureRecognizerDelegat
         
         //Assinging the text and ID of the cell
         if let sauce = SauceySauce?[indexPath.row] {
+            if sauce.change == false {
+                NoSauceAlert()
+            } else {
             cell.TheName.text = sauce.name
             let ID = String(sauce.id)
             cell.SauceNumbers.text = ID
+            }
         }
         
         cell.textLabel?.isUserInteractionEnabled = false
@@ -95,7 +101,6 @@ class HomeTableViewController: UITableViewController, UIGestureRecognizerDelegat
     
     
     //MARK: - Add Button
-    
     @IBAction func AddButton(_ sender: UIBarButtonItem) {
         
         
@@ -118,7 +123,7 @@ class HomeTableViewController: UITableViewController, UIGestureRecognizerDelegat
                 print(ID)
                 print("Break your legs")
                 //Then runs URLCreatin that's inside API
-                URLCreation(with: ID)
+                self.findthesauce.URLCreation(with: ID)
                 //This delay stops this whole block from running too fast and not allowing the data to be reloaded
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { // Change `2.0` to the desired number of seconds.
                     self.AcquireDATA()
@@ -220,9 +225,10 @@ class HomeTableViewController: UITableViewController, UIGestureRecognizerDelegat
 }
 
 
-//MARK: - Helpful tip extenstion / function
+//MARK: - ExtraFunctions
 
 extension HomeTableViewController {
+    //Helpful tips, tells ppl how to delete teh sauce and perhaps other helpful tips when the gear is pressed
     func HelpFullTips() {
         let alert = UIAlertController(title: "Tips", message: "If you would like to delete the sauce, hold down on the sauce you want to delete until the notification is presented", preferredStyle: .alert)
         
@@ -233,7 +239,23 @@ extension HomeTableViewController {
         alert.addAction(Okay)
         present(alert,animated: true,completion: nil)
     }
+    //The notification that is displayed when the sauce you wanted to find isn't real and nothing was found
+    func NoSauceAlert(){
+        let alert = UIAlertController(title: "Error", message: "There was no sauce found with the given numbers, please try agains sped", preferredStyle: .alert)
+        
+        let Okay = UIAlertAction(title: "Okay", style: .default) { (Action) in
+            //Dismisses
+        }
+        
+        alert.addAction(Okay)
+        present(alert,animated: true,completion: nil)
+
+    }
+
+    
 }
+
+
 
 
 

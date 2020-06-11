@@ -11,85 +11,100 @@
 import Foundation
 import RealmSwift
 
-let Id = "177013"
-let search = "Eromanga Sensei"
+//Future and testing Constant
+//let relatedurl = "https://nhentai.net/api/gallery/\(Id)/related"
+//let searchurl = "https://nhentai.net/api/galleries/search?query=\(search)"
 
-let url = "https://nhentai.net/api/gallery/\(Id)"
-let relatedurl = "https://nhentai.net/api/gallery/\(Id)/related"
-let searchurl = "https://nhentai.net/api/galleries/search?query=\(search)"
+
+protocol SauceDelegate {
+    func NoSauceAlert()
+}
 
 
 //Creates the URl and then calls perform request
-func URLCreation(with ID: String) {
-    print("created")
-    let url = "https://nhentai.net/api/gallery/\(ID)"
-    let relatedurl = "https://nhentai.net/api/gallery/\(ID)/related"
-    
-    performRequest(with: url, with: relatedurl)
-    
-}
 
-
-func performRequest(with URLString: String,with RelatedString: String) {
-    print("STARTING SUCCION")
-    if let url = URL(string: URLString) {
-        let Session = URLSession(configuration: .default)
-        let Task = Session.dataTask(with: url) { (Data, URLResponse, Error) in
-            if Error != nil {
-                print(Error!)
-            } else {
-                print("No error")
-            }
-            if let SafeData = Data {
-                print("Parse been called")
-                ParseJSON(Data!)
-            }
-            
-            
-        }
-        Task.resume()
+struct FindSauce {
+    
+    var Delegate: SauceDelegate?
+    
+    
+    func URLCreation(with ID: String) {
+        print("created")
+        let url = "https://nhentai.net/api/gallery/\(ID)"
+        let relatedurl = "https://nhentai.net/api/gallery/\(ID)/related"
+        
+        performRequest(with: url, with: relatedurl)
+        
     }
-}
-
-
-
-func ParseJSON(_ data: Data) {
     
-    var sauce: Results<Sauce>
     
-    let decoder = JSONDecoder()
-    
-    do {
-        let DecodedData = try decoder.decode(MyData.self, from: data)
-        let Title = DecodedData.title.english
-        let Number = DecodedData.num_pages
-        let welp = 0..<DecodedData.tags.count
-        var AllTags = List<String>()
-        
-        
-        
-        
-        let ID = DecodedData.id
-        
-        let newSauce = Sauce()
-        newSauce.name = Title
-        newSauce.pgs = Number
-        newSauce.id = ID
-        print("Assinged the first few things")
-        
-        for number in welp {
-            let SauceTags = NiceTags()
-            let Tags = DecodedData.tags[number].name
-            SauceTags.tags = Tags
-            newSauce.tags.append(SauceTags)
-            
+    func performRequest(with URLString: String,with RelatedString: String) {
+        print("STARTING SUCCION")
+        if let url = URL(string: URLString) {
+            let Session = URLSession(configuration: .default)
+            let Task = Session.dataTask(with: url) { (Data, URLResponse, Error) in
+                if Error != nil {
+                    print(Error!)
+                } else {
+                    print("No error")
+                }
+                if let SafeData = Data {
+                    print("Parse been called")
+                    self.ParseJSON(Data!)
+                }
+                
+                
+            }
+            Task.resume()
         }
-        DispatchQueue.main.async {
-            Save(sauce: newSauce)
+    }
+    
+    
+    
+    func ParseJSON(_ data: Data) {
+        
+        var sauce: Results<Sauce>
+        
+        let decoder = JSONDecoder()
+        
+        do {
+            let DecodedData = try decoder.decode(MyData.self, from: data)
+            let Title = DecodedData.title.english
+            let Number = DecodedData.num_pages
+            let welp = 0..<DecodedData.tags.count
+            var AllTags = List<String>()
             
+            
+            
+            
+            let ID = DecodedData.id
+            
+            let newSauce = Sauce()
+            
+            newSauce.name = Title
+            newSauce.pgs = Number
+            newSauce.id = ID
+            print("Assinged the first few things")
+            
+            for number in welp {
+                let SauceTags = NiceTags()
+                let Tags = DecodedData.tags[number].name
+                SauceTags.tags = Tags
+                newSauce.tags.append(SauceTags)
+                
+            }
+            DispatchQueue.main.async {
+                Save(sauce: newSauce)
+                
+            }
+            
+        } catch {
+            print(error)
+            DispatchQueue.main.async {
+                self.Delegate?.NoSauceAlert()
+                
+            }
         }
-    } catch {
-        print(error)
     }
 }
 

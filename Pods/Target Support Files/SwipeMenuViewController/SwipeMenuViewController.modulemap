@@ -1,6 +1,0 @@
-framework module SwipeMenuViewController {
-  umbrella header "SwipeMenuViewController-umbrella.h"
-
-  export *
-  module * { export * }
-}
