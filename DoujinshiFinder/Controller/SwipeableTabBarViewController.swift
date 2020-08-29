@@ -36,7 +36,15 @@ class SwipeableTabBarViewController: SwipeableTabBarController {
         last_vc.navigationItem.title = "Tags"
         first_vc.SelectedSauce = SelectedSauce
         last_vc.SelectedSauce = SelectedSauce
+        TitleChanger()
     }
+    
+    func TitleChanger(){
+        if let Sauce = SelectedSauce {
+            navigationItem.title = String(Sauce.id)
+        }
+    }
+    
     
     
     // MARK: - Navigation

@@ -28,6 +28,7 @@ class DetailViewController: UIViewController {
         //Calls these variabels and populates the views with them
         NameLabel.text = (Defaults.object(forKey: "Name") as! String)
         PageNumberLabel.text = (Defaults.object(forKey: "Pages") as! String)
+        navigationItem.title = (Defaults.object(forKey: "Id") as! String)
         
     }
     
@@ -48,6 +49,8 @@ class DetailViewController: UIViewController {
                 Defaults.set(SauceName, forKey: "Name")
                 let SaucePages = String(Sauce.pgs)
                 Defaults.set(SaucePages, forKey: "Pages")
+                let SauceId = String(Sauce.id)
+                Defaults.set(SauceId, forKey: "Id")
             }
         }
     }
